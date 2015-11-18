@@ -1,0 +1,55 @@
+package tpalgo1;
+
+import java.util.ArrayList;
+
+public class Personaje 
+{
+	public Personaje(ArrayList<Habilidad> lasHabilidades, String elNombre, int laVida, int laVelocidad)
+	{
+	}
+		
+	private String nombre;
+	private ArrayList<Habilidad> habilidades;
+	private int vidaMaxima;
+	private int vidaActual
+	private int velocidad;
+	private ArrayList<String> victimas;
+	
+	public String getNombre() {
+	}
+	
+	public ArrayList<Habilidad> getHabilidades() {
+	}
+	
+	public int getVidaMaxima()
+    {
+	}
+	
+	public int getVidaActual()
+    {
+	}
+	
+	public void	setVidaActual(int vida)
+    {
+	}
+
+	public int getVelocidad()
+    {
+	}
+	
+	public ArrayList<String> getVictimas()
+    {
+	}
+	
+	public void agregarVictima(String victima)
+    {
+	}
+    
+    public static void Escribir(Writer out, Personaje t) throws IOException
+	{
+	}
+	
+	public static Personaje Leer(StringTokenizer in) throws IOException
+	{
+    }
+}

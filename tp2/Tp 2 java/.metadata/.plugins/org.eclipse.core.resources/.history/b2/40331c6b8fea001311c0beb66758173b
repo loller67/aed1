@@ -1,0 +1,141 @@
+package tpalgo1;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Map;
+
+public class Juego 
+{
+	private Tablero tablero;
+	private ArrayList<Personaje> personajes;
+	private Map<String, Posicion> posiciones;
+	
+	public Juego(ArrayList<Personaje> p, Map<String, Posicion> pos, Tablero t) {
+		this.tablero = t;
+		this.personajes = p;
+		this.posiciones = pos;
+	}
+	
+	public Tablero getTablero() {
+		return tablero;
+	}
+
+	public ArrayList<Personaje> getPersonajes() {
+		return personajes;
+	}
+	
+	public Posicion posicion(Personaje p)
+	{
+		return this.posiciones.get(p);
+	}
+	public boolean jaqueMate(Personaje p)
+	{
+		
+	}
+	
+	public ArrayList<Personaje> victimasPorCercania(Personaje p)
+	{
+	}
+	
+	public ArrayList<Posicion> posicionesSeguras(Personaje p)
+	{
+		int i =0;
+		int j =0;
+		ArrayList <Posicion> lista = new ArrayList <Posicion> ();
+		while (i< this.getTablero().getAncho())
+		{
+			while(j< this.getTablero().getAlto())
+			{
+				Posicion pos = new Posicion (i,j);
+				if(distancia(pos,this.posicion(p)) <= p.getVelocidad())
+			{
+				lista.add(pos);
+			}
+				
+			}
+		}
+		
+	}
+	
+	public ArrayList<Personaje> losMasPoderosos()
+	{
+		int i = 0;
+		int max = maxlevel (this);
+		ArrayList<Personaje> lista = new ArrayList<Personaje>();
+		while (i < this.getPersonajes().size())
+		{
+			if ( nivelhabilidades (this.getPersonajes().get(i)) == max)
+			{
+				lista.add(this.getPersonajes().get(i));
+			}
+			i++;
+		}
+		return lista;
+	}
+	
+	public Personaje elVengador()
+	{
+		int i = 0;
+		int vengador = 0;
+		int indice = 0;
+		while (i < this.getPersonajes().size())
+		{
+			if (niveldevenganza(this.getPersonajes().get(i),this) > vengador)
+			{
+				vengador = niveldevenganza(this.getPersonajes().get(i),this);
+				indice = i;
+			}
+			i++;
+		}
+		return this.getPersonajes().get(indice);
+	}
+	
+	public void teletransportacion()
+	{
+	}
+	
+	public void atacar(Personaje p)
+	{
+	}
+
+    public static void Escribir(Writer out, Juego t) throws IOException
+	{
+	}
+	
+	public static Juego Leer(StringTokenizer in) throws IOException
+	{
+    }
+	
+	private int maxlevel (Juego j)
+	{
+		int i = 0;
+		int max = 0;
+		while (i < j.getPersonajes().size())
+		{
+			if (nivelhabilidades(j.getPersonajes().get(i)) > max)
+			{
+				max= nivelhabilidades(j.getPersonajes().get(i));
+			}
+		}
+		return max;
+	}
+	
+	private int nivelhabilidades (Personaje p)
+	{
+		return (p.getHabilidades().get(0).getLevel() + p.getHabilidades().get(1).getLevel() );
+	}
+	
+	private int niveldevenganza (Personaje p, Juego j)
+	{
+		int i = 0;
+		int a = 0;
+		while (i < p.getVictimas().size())
+		{
+			int q= j.getPersonajes().indexOf(p.getVictimas().get(i));
+			a = a + j.getPersonajes().get(q).getVictimas().size();
+			i ++;
+		}
+		return a;
+	}
+}

@@ -1,0 +1,55 @@
+package tpalgo1;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+
+public class Programa {
+
+	public static void main(String[] parametro) throws IOException
+	{
+		File file = new File ("C:\\Users\\Fabian\\Desktop\\Pruebas\\Pruebas\\src\\juego.txt");
+		FileReader archivo = new FileReader (file);
+		BufferedReader x = new BufferedReader(archivo);
+		StringTokenizer y = new StringTokenizer (x.readLine());
+		y.nextElement();
+		StringTokenizer aux = new StringTokenizer(y.nextToken(")"));
+		Tablero T = Tablero.Leer(aux);
+		y.nextToken("[");
+		y.nextToken(" ");
+		//revisar hasta el proximo comentario
+		aux = new StringTokenizer( y.nextToken("]"));
+		ArrayList <Posicion> posiciones = new ArrayList <Posicion> ();
+		String texto= aux.nextToken(")") + ")" ;
+		Posicion P = Posicion.Leer(new StringTokenizer(texto));
+		posiciones.add(P);
+		int h = aux.countTokens();
+		while (h != 1)
+		{
+			aux.nextToken(",");
+			aux.nextToken(" ");
+			texto= aux.nextToken(")") + ")" ;
+			P = Posicion.Leer(new StringTokenizer(texto));
+			posiciones.add(P);
+			h = aux.countTokens();
+		}
+		// en posiciones tengo las combinaciones de nombrepersonaje y posicion para poner en el map de juego
+		y.nextToken("[");
+		int i=0;
+		ArrayList <Personaje> personajes = new ArrayList <Personaje>();
+		while (i < posiciones.size()-1)
+		{
+			y.nextToken();
+			personajes.add(Personaje.Leer(new StringTokenizer (y.nextToken(","))));
+			i++;
+		}
+		y.nextToken();
+		personajes.add(Personaje.Leer(y));
+		
+	}
+}
+

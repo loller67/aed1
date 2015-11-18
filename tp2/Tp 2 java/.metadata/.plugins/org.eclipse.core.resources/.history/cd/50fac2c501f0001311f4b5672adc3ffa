@@ -1,0 +1,33 @@
+package tpalgo1;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+
+public class Programa {
+
+	public static void main(String[] parametro) throws IOException
+	{
+		File file = new File ("C:\\Users\\Fabian\\Desktop\\Pruebas\\Pruebas\\src\\juego.txt");
+		FileReader archivo = new FileReader (file);
+		BufferedReader x = new BufferedReader(archivo);
+		StringTokenizer y = new StringTokenizer (x.readLine());
+		y.nextElement();
+		Juego J = Juego.Leer(y);
+		
+		//aca ya se encuentra todo leido y creado, listo para aplicar cualquier funcion
+		
+		//reescribo las cosas
+		file.deleteOnExit();
+		File nuevo = new File ("C:\\Users\\Fabian\\Desktop\\Pruebas\\Pruebas\\src\\juego.txt");
+		FileWriter writ = new FileWriter (nuevo);
+		Juego.Escribir(writ, J);
+		nuevo.createNewFile();
+	}
+}
+

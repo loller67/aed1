@@ -1,0 +1,81 @@
+package tpalgo1;
+
+import java.io.IOException;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class Personaje 
+{
+	public Personaje(ArrayList<Habilidad> lasHabilidades, String elNombre, int laVida, int laVelocidad)
+	{
+		this.habilidades=lasHabilidades;
+		this.nombre=elNombre;
+		this.velocidad=laVelocidad;
+		this.vidaActual=laVida;
+		this.vidaMaxima=laVida;
+		this.victimas= new ArrayList();
+	}
+		
+	private String nombre;
+	private ArrayList<Habilidad> habilidades;
+	private int vidaMaxima;
+	private int vidaActual;
+	private int velocidad;
+	private ArrayList<String> victimas;
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public ArrayList<Habilidad> getHabilidades() {
+		return habilidades;
+	}
+	
+	public int getVidaMaxima()
+    {
+		return vidaMaxima;
+	}
+	
+	public int getVidaActual()
+    {
+		return vidaActual;
+	}
+	
+	public void	setVidaActual(int vida)
+    {
+		if (vida <= this.vidaMaxima){this.vidaActual = vida;}
+		else {this.vidaActual=this.vidaMaxima;}
+	}
+
+	public int getVelocidad()
+    {
+		return velocidad;
+	}
+	
+	public ArrayList<String> getVictimas()
+    {
+		return victimas;
+	}
+	
+	public void agregarVictima(String victima)
+    {
+		int i=0;
+		boolean pertenece = false;
+		while (i < this.victimas.size())
+		{
+			if (this.victimas.get(i)==victima){pertenece=true;}
+			i++;
+		}
+		if (pertenece ==false){this.victimas.add(victima);}
+	}
+    
+    public static void Escribir(Writer out, Personaje t) throws IOException
+	{
+	}
+	
+	public static Personaje Leer(StringTokenizer in) throws IOException
+	{
+		
+    }
+}

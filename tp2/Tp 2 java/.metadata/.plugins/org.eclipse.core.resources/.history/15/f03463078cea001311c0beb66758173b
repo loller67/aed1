@@ -1,0 +1,69 @@
+package tpalgo1;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Map;
+
+public class Juego 
+{
+	private Tablero tablero;
+	private ArrayList<Personaje> personajes;
+	private Map<String, Posicion> posiciones;
+	
+	public Juego(ArrayList<Personaje> p, Map<String, Posicion> pos, Tablero t) {
+		this.tablero = t;
+		this.personajes = p;
+		this.posiciones = pos;
+	}
+	
+	public Tablero getTablero() {
+		return tablero;
+	}
+
+	public ArrayList<Personaje> getPersonajes() {
+		return personajes;
+	}
+	
+	public Posicion posicion(Personaje p)
+	{
+		return this.posiciones.get(p);
+	}
+	public boolean jaqueMate(Personaje p)
+	{
+		
+	}
+	
+	public ArrayList<Personaje> victimasPorCercania(Personaje p)
+	{
+	}
+	
+	public ArrayList<Posicion> posicionesSeguras(Personaje p)
+	{
+	}
+	
+	public ArrayList<Personaje> losMasPoderosos()
+	{
+	}
+	
+	public Personaje elVengador()
+	{
+	}
+	
+	public void teletransportacion()
+	{
+	}
+	
+	public void atacar(Personaje p)
+	{
+	}
+
+    public static void Escribir(Writer out, Juego t) throws IOException
+	{
+	}
+	
+	public static Juego Leer(StringTokenizer in) throws IOException
+	{
+    }
+	
+}

@@ -1,0 +1,101 @@
+package tpalgo1;
+
+import java.io.IOException;
+import java.io.Writer;
+import java.util.StringTokenizer;
+
+public class Habilidad 
+{
+	public Habilidad(TipoHabilidad elTipo)
+	{
+		this.tipo = elTipo;
+		this.level = 1;
+	}
+	
+	private TipoHabilidad tipo;
+	private int level;
+
+	public TipoHabilidad getTipo()
+    {
+		return this.tipo;
+	}
+	
+	public int getRango() 
+	{
+		if (this.tipo == TipoHabilidad.Sanar){return (level * 3);}
+		if (this.tipo == TipoHabilidad.Atacar){return (level * 2);}
+		if (this.tipo == TipoHabilidad.AtacarLejos){return (level * 3);}
+		if (this.tipo == TipoHabilidad.AtacarFuerte){return 1;}
+		if (this.tipo == TipoHabilidad.ChuckNorris)
+		{
+			if (this.level <= 100){return 1;}
+			else {return 99999;}
+		}
+		return 0;
+	}
+	
+	public int getPoder() 
+	{
+		if (this.tipo == TipoHabilidad.Sanar){return (level * 5);}
+		if (this.tipo == TipoHabilidad.Atacar){return (level * 3);}
+		if (this.tipo == TipoHabilidad.AtacarLejos){return (level * 2);}
+		if (this.tipo == TipoHabilidad.AtacarFuerte){return (level * 5);}
+		if (this.tipo == TipoHabilidad.ChuckNorris)
+		{
+			if (this.level <= 100){return 1;}
+			else {return 99999;}
+		}
+		return 0;
+	}
+
+	public int getLevel()
+    {
+		return this.level;
+	}
+	
+	public void setLevel(int level)
+    {
+		this.level = level;
+	}
+    
+    public static void Escribir(Writer out, Habilidad t) throws IOException
+	{
+	}
+	
+	public static Habilidad Leer(StringTokenizer in) throws IOException
+	{
+		String tipo = in.nextToken();
+		int level = Integer.valueOf(in.nextToken());
+		if (tipo== "Sanar") 
+			{
+			Habilidad habili = new Habilidad (TipoHabilidad.Sanar);
+			habili.setLevel(level);
+			return habili;
+			}
+		if (tipo== "Atacar") 
+			{
+			Habilidad habili = new Habilidad (TipoHabilidad.Atacar);
+			habili.setLevel(level);
+			return habili;
+			}
+		if (tipo== "AtacarFuerte") 
+			{
+			Habilidad habili = new Habilidad (TipoHabilidad.AtacarFuerte);
+			habili.setLevel(level);
+			return habili;
+			}
+		if (tipo== "AtacarLejos") 
+			{
+			Habilidad habili = new Habilidad (TipoHabilidad.AtacarLejos);
+			habili.setLevel(level);
+			return habili;
+			}
+		if (tipo== "ChuckNorris") {
+			Habilidad habili = new Habilidad (TipoHabilidad.ChuckNorris);
+			habili.setLevel(level);
+			return habili;
+			}
+		
+		return null;
+    }
+}
